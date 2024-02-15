@@ -28,4 +28,22 @@ function createCloudsAndSymbols() {
 }
 
 // Modal functionality
-var modal = document.getElementById("payment
+var modal = document.getElementById("paymentOptions");
+var btn = document.getElementById("donateButton");
+
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+// Initialize clouds and symbols
+createCloudsAndSymbols();
