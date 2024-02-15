@@ -2,6 +2,32 @@ function createCloudsAndSymbols() {
     const cloudsContainer = document.getElementById('clouds');
     const symbolsContainer = document.getElementById('symbols');
 
+    // Function to create a cloud with additional circles
+function createCloud() {
+        const mainSize = Math.random() * (60 - 40) + 40; // Main cloud size between 40 and 60
+        const cloudBase = createCloudPart(mainSize, 'cloud');
+        cloudsContainer.appendChild(cloudBase);
+
+        // Left smaller circle, 1/3 the size of the main
+        const smallCircle = createCloudPart(mainSize / 3, 'cloud-part');
+        smallCircle.style.left = `-${mainSize / 4}px`; // Positioning to the left
+        cloudBase.appendChild(smallCircle);
+
+        // Right larger circle, 2/3 the size of the main
+        const largeCircle = createCloudPart((mainSize / 3) * 2, 'cloud-part');
+        largeCircle.style.right = `-${mainSize / 4}px`; // Positioning to the right
+        cloudBase.appendChild(largeCircle);
+    }
+
+    // Helper function to create individual cloud parts
+    function createCloudPart(size, className) {
+        const part = document.createElement('div');
+        part.className = className;
+        part.style.width = `${size}px`;
+        part.style.height = `${size}px`;
+        return part;
+    }
+
     // Function to create a cloud or symbol with direction and position
     function createFloatingElement(elementType, container, sizeRange, durationRange, isSymbol = false) {
         const element = document.createElement('div');
