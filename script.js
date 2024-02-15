@@ -34,8 +34,25 @@ function createCloudsAndSymbols() {
         createFloatingElement('symbol', symbolsContainer, {min: 20, max: 50}, {min: 40, max: 60}, true);
     }
 }
+// Modal functionality
+var modal = document.getElementById("paymentOptions");
+var btn = document.getElementById("donateButton");
 
-// Modal functionality remains the same
+// Function to open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
 
+// Function to close the modal when clicking on the close button
+function closeModal() {
+    modal.style.display = "none";
+}
+
+// Clicking anywhere outside of the modal content closes the modal
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
 // Initialize clouds and symbols
 createCloudsAndSymbols();
