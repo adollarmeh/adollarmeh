@@ -1,49 +1,64 @@
-function createCloudsAndSymbols() {
-    const cloudsContainer = document.getElementById('clouds');
-    const symbolsContainer = document.getElementById('symbols');
-
-    // Create clouds
-    for (let i = 0; i < 20; i++) {
-        const cloud = document.createElement('div');
-        cloud.className = 'cloud';
-        const size = Math.random() * 60 + 40; // Cloud size between 40 and 100px
-        cloud.style.width = `${size}px`;
-        cloud.style.height = `${size * 0.6}px`; // Maintain aspect ratio
-        cloud.style.left = `${Math.random() * 100}%`;
-        cloud.style.animationDuration = `${Math.random() * 20 + 40}s`; // Animation duration between 40 and 60s
-        cloudsContainer.appendChild(cloud);
-    }
-
-    // Create $1 symbols
-    for (let i = 0; i < 5; i++) {
-        const symbol = document.createElement('div');
-        symbol.className = 'symbol';
-        symbol.textContent = '$1';
-        const size = Math.random() * 30 + 20; // Symbol size between 20 and 50px
-        symbol.style.fontSize = `${size}px`;
-        symbol.style.left = `${Math.random() * 100}%`;
-        symbol.style.animationDuration = `${Math.random() * 20 + 40}s`; // Animation duration between 40 and 60s
-        symbolsContainer.appendChild(symbol);
-    }
+body, html {
+    height: 100%;
+    margin: 0;
+    background-color: #87CEEB; /* Sky blue background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
 }
 
-// Modal functionality
-var modal = document.getElementById("paymentOptions");
-var btn = document.getElementById("donateButton");
-
-btn.onclick = function() {
-    modal.style.display = "block";
+.container {
+    text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-function closeModal() {
-    modal.style.display = "none";
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
 }
 
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
 }
 
-// Initialize clouds and symbols
-createCloudsAndSymbols();
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    cursor: pointer;
+}
+
+button {
+    font-size: 1em;
+    padding: 10px 20px;
+    border: 2px solid black;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: black;
+    color: white;
+}
