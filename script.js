@@ -1,39 +1,20 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    background-color: #87CEEB; /* Sky blue background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    font-family: 'Nunito', sans-serif;
+// Modal functionality
+var modal = document.getElementById("paymentOptions");
+var btn = document.getElementById("donateButton");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+    modal.style.display = "block";
 }
 
-.container {
-    text-align: center;
-    position: relative;
-    z-index: 2;
+span.onclick = function() {
+    modal.style.display = "none";
 }
 
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 10;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0,0,0,0.4);
-    padding-top: 60px;
-}
-
-.modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
 .close {
