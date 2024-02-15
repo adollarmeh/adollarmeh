@@ -7,14 +7,14 @@ body, html {
     position: relative;
 }
 
-/* Clouds and symbols styling */
-.cloud, .cloud-part, .symbol {
-    position: absolute;
+.cloud, .cloud-part {
+    background-color: rgba(255, 255, 255, 0.8);
     border-radius: 50%;
+    position: absolute;
 }
 
-.cloud, .cloud-part {
-    background-color: rgba(255, 255, 255, 0.8); /* Making clouds slightly more opaque for visibility */
+.cloud {
+    animation: drift linear infinite;
 }
 
 .symbol {
