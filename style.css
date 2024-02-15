@@ -2,53 +2,76 @@ body, html {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    background-color: #f0f0f0;
+    background-color: #f0f0f0; /* Light grey to represent sky */
     font-family: 'Nunito', sans-serif;
     position: relative;
 }
 
-.clouds .cloud {
+.cloud {
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
+    background-color: #fff; /* Cloud color */
     border-radius: 50%;
-    opacity: 0.6;
+    opacity: 0.8;
 }
 
+/* Example cloud shapes */
 #cloud1, #cloud2, #cloud3 {
-    width: 200px; height: 60px;
+    width: 120px; height: 40px;
 }
 
 #cloud1:before, #cloud1:after, #cloud2:before, #cloud2:after, #cloud3:before, #cloud3:after {
-    content: "";
+    content: '';
     position: absolute;
-    background: rgba(255, 255, 255, 0.8);
+    background-color: #fff;
     border-radius: 50%;
 }
 
-#cloud1:before, #cloud2:before, #cloud3:before {
-    width: 100px; height: 100px;
-    top: -50px;
-    left: 50px;
+/* Adjust sizes and positions to make the clouds look more natural */
+#cloud1:before {
+    width: 60px; height: 60px;
+    top: -30px; left: 10px;
 }
 
-#cloud1:after, #cloud2:after, #cloud3:after {
-    width: 150px; height: 150px;
-    top: -75px;
-    right: 50px;
+#cloud1:after {
+    width: 80px; height: 80px;
+    top: -40px; right: 10px;
+}
+
+#cloud2:before {
+    width: 50px; height: 50px;
+    top: -25px; left: -5px;
+}
+
+#cloud2:after {
+    width: 70px; height: 70px;
+    top: -35px; right: 15px;
+}
+
+#cloud3:before {
+    width: 90px; height: 90px;
+    top: -45px; left: 20px;
+}
+
+#cloud3:after {
+    width: 50px; height: 50px;
+    top: -25px; right: -5px;
 }
 
 @keyframes moveClouds {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+    from { transform: translateX(-100%); }
+    to { transform: translateX(100vw); }
 }
 
 .cloud {
-    animation: moveClouds 20s linear infinite;
+    animation: moveClouds 40s linear infinite;
 }
 
-#cloud1 { animation-duration: 25s; }
-#cloud2 { animation-duration: 30s; }
-#cloud3 { animation-duration: 35s; }
+#cloud1 { animation-duration: 50s; }
+#cloud2 { animation-duration: 45s; }
+#cloud3 { animation-duration: 60s; }
+
+/* Add your existing styles for container, modal, etc., below */
+
 
 .container {
     text-align: center;
