@@ -1,66 +1,53 @@
 function createCloudsAndSymbols() {
     const cloudsContainer = document.getElementById('clouds');
-    const symbolsContainer = document.getElementById('symbols');
 
-    // Adjusted function to create detailed clouds
     function createCloud() {
-        const mainSize = Math.random() * (60 - 40) + 40; // Main cloud size between 40 and 60
-        // Adjusting for random direction
-        const direction = Math.random() > 0.5 ? 'left' : 'right';
-        const cloudBase = createCloudPart(mainSize, 'cloud', direction);
-        cloudsContainer.appendChild(cloudBase);
+        // Main cloud size and random speed
+        const mainSize = Math.random() * (120 - 80) + 80; // Adjusted for larger size
+        const speed = Math.random() * (60 - 20) + 20; // Random speed between 20s and 60s
 
-        // Additional circles with adjusted positioning for direction
-        const smallCircle = createCloudPart(mainSize / 3, 'cloud-part', direction);
-        const largeCircle = createCloudPart((mainSize / 3) * 2, 'cloud-part', direction);
+        // Create main cloud div
+        const cloudBase = document.createElement('div');
+        cloudBase.className = 'cloud';
+        cloudBase.style.width = `${mainSize}px`;
+        cloudBase.style.height = `${mainSize * 0.6}px`; // Maintain aspect ratio
+        setCloudPositionAndSpeed(cloudBase, speed);
+
+        // Create and position smaller attached circles
+        const smallCircle = document.createElement('div');
+        smallCircle.className = 'cloud-part';
+        const smallSize = mainSize / 3;
+        smallCircle.style.width = `${smallSize}px`;
+        smallCircle.style.height = `${smallSize}px`;
         smallCircle.style.position = 'absolute';
+        smallCircle.style.left = `-${smallSize / 2}px`; // Half outside the main cloud on the left
+        setCloudPositionAndSpeed(smallCircle, speed, true);
+
+        const largeCircle = document.createElement('div');
+        largeCircle.className = 'cloud-part';
+        const largeSize = (mainSize / 3) * 2;
+        largeCircle.style.width = `${largeSize}px`;
+        largeCircle.style.height = `${largeSize}px`;
         largeCircle.style.position = 'absolute';
+        largeCircle.style.right = `-${largeSize / 2}px`; // Half outside the main cloud on the right
+        setCloudPositionAndSpeed(largeCircle, speed, true);
 
-        if (direction === 'left') {
-            smallCircle.style.left = `-${mainSize / 4}px`;
-            largeCircle.style.right = `-${mainSize / 4}px`;
-        } else { // Adjusting for right-to-left movement
-            smallCircle.style.right = `-${mainSize / 4}px`;
-            largeCircle.style.left = `-${mainSize / 4}px`;
-        }
-
+        // Append circles to the main cloud div
         cloudBase.appendChild(smallCircle);
         cloudBase.appendChild(largeCircle);
 
-        // Random Y-axis position and animation duration
-        cloudBase.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
-        cloudBase.style.animationDuration = `${Math.random() * (20 - 40) + 60}s`;
-
-        // Assigning direction to animation
-        cloudBase.style.animationDirection = direction === 'left' ? 'normal' : 'reverse';
+        // Append the main cloud div to the container
+        cloudsContainer.appendChild(cloudBase);
     }
 
-    // Adjusted helper function to create individual cloud parts
-    function createCloudPart(size, className, direction) {
-        const part = document.createElement('div');
-        part.className = className;
-        part.style.width = `${size}px`;
-        part.style.height = `${size}px`;
-        return part;
+    function setCloudPositionAndSpeed(element, speed, isPart = false) {
+        element.style.animationDuration = `${speed}s`;
+        if (!isPart) { // Only set top position for the main cloud, not its parts
+            element.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+        }
     }
 
-    // Create $1 symbols with random properties
-    for (let i = 0; i < 5; i++) {
-        const size = Math.random() * (50 - 20) + 20; // Symbol size between 20 and 50
-        const symbol = document.createElement('div');
-        symbol.className = 'symbol';
-        symbol.textContent = '$1';
-        symbol.style.fontSize = `${size}px`;
-        symbolsContainer.appendChild(symbol);
-
-        // Random direction, Y-axis position, and animation duration for symbols
-        symbol.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
-        const direction = Math.random() > 0.5 ? 'normal' : 'reverse';
-        symbol.style.animationDirection = direction;
-        symbol.style.animationDuration = `${Math.random() * (20 - 40) + 60}s`;
-    }
-
-    // Creating 20 clouds
+    // Create a specified number of clouds
     for (let i = 0; i < 20; i++) {
         createCloud();
     }
