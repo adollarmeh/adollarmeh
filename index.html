@@ -3,26 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>aDollarMeh - Interactive Clouds</title>
+    <title>aDollarMeh - Clouds and Symbols</title>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="container">
-    <button id="donateButton">aDollarMeh</button>
-    <div id="paymentOptions" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <p>To donate $1, please use the following options:</p>
-            <ul>
-                <li>Bank Transfer: BSB 342201, Acc 141561090</li>
-                <li>PayPal: <a href="https://www.paypal.com/paypalme/millionideas" target="_blank">paypal.me/millionideas</a></li>
-            </ul>
+    <div id="clouds">
+        <!-- Clouds -->
+        <!-- We will generate these with JavaScript -->
+    </div>
+    <div id="symbols">
+        <!-- $1 Symbols -->
+        <!-- We will generate these with JavaScript -->
+    </div>
+    <div class="container">
+        <button id="donateButton">aDollarMeh</button>
+        <div id="paymentOptions" class="modal">
+            <div class="modal-content">
+                <p>To donate $1, please use the following options:</p>
+                <ul>
+                    <li>Bank Transfer: BSB 342201, Acc 141561090</li>
+                    <li>PayPal: <a href="https://www.paypal.com/paypalme/millionideas" target="_blank">paypal.me/millionideas</a></li>
+                </ul>
+                <button onclick="closeModal()">Close</button>
+            </div>
         </div>
     </div>
-</div>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
