@@ -7,29 +7,41 @@ body, html {
     position: relative;
 }
 
-.cloud, .cloud-part {
-    background-color: rgba(255, 255, 255, 0.8);
+/* Styling for clouds and their parts */
+.cloud, .cloud-part-left, .cloud-part-right {
+    background-color: rgba(255, 255, 255, 0.8); /* Translucent white for cloud appearance */
     border-radius: 50%;
     position: absolute;
 }
 
 .cloud {
-    animation: drift linear infinite;
+    animation: driftRight linear infinite; /* Default animation */
 }
 
+.cloud-part-left, .cloud-part-right {
+    /* Position these elements using JavaScript to attach them to the main cloud */
+}
+
+/* $1 symbols styling */
 .symbol {
-    color: #fff; /* White $1 symbols */
+    color: #fff; /* White color for the $1 symbols */
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    animation: drift 50s linear infinite; /* Applying animation specifically to symbols */
+    position: absolute;
+    animation: driftRight linear infinite; /* Default animation */
 }
 
-/* Animation for drifting effect */
-@keyframes drift {
+/* Animations for moving elements across the screen */
+@keyframes driftRight {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100vw); }
+}
+
+@keyframes driftLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100vw); }
 }
 
 /* Container for the modal and button */
@@ -38,7 +50,7 @@ body, html {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2; /* Above the clouds and symbols */
+    z-index: 1000; /* High z-index to ensure it's above other elements */
     text-align: center;
 }
 
@@ -46,13 +58,13 @@ body, html {
 .modal {
     display: none;
     position: fixed;
-    z-index: 10; /* Ensure it's on top of everything */
+    z-index: 1001; /* Ensuring the modal is above everything else */
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+    background-color: rgba(0,0,0,0.4); /* Semi-transparent black background */
     padding-top: 60px;
 }
 
@@ -77,7 +89,7 @@ body, html {
     cursor: pointer;
 }
 
-/* Styling for the 'Donate' button */
+/* Button styling */
 button {
     font-size: 1em;
     padding: 10px 20px;
@@ -91,4 +103,3 @@ button:hover {
     background-color: black;
     color: white;
 }
-
