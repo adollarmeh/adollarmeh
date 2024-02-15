@@ -1,86 +1,62 @@
 function createCloudsAndSymbols() {
     const cloudsContainer = document.getElementById('clouds');
+    const symbolsContainer = document.getElementById('symbols');
 
     function createCloud() {
-        // Main cloud size and random speed
-        const mainSize = Math.random() * (120 - 80) + 80; // Adjusted for larger size
-        const speed = Math.random() * (60 - 20) + 20; // Random speed between 20s and 60s
+        const mainSize = Math.random() * (120 - 80) + 80; // Main cloud size
+        const speed = Math.random() * (60 - 20) + 20; // Random speed
 
-        // Create main cloud div
+        // Create the main cloud div and set its properties
         const cloudBase = document.createElement('div');
         cloudBase.className = 'cloud';
         cloudBase.style.width = `${mainSize}px`;
-        cloudBase.style.height = `${mainSize * 0.6}px`; // Maintain aspect ratio
-        setCloudPositionAndSpeed(cloudBase, speed);
+        cloudBase.style.height = `${mainSize * 0.6}px`;
+        cloudBase.style.animationDuration = `${speed}s`;
+        cloudBase.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
 
-        // Create and position smaller attached circles
-        const smallCircle = document.createElement('div');
-        smallCircle.className = 'cloud-part';
-        const smallSize = mainSize / 3;
-        smallCircle.style.width = `${smallSize}px`;
-        smallCircle.style.height = `${smallSize}px`;
-        smallCircle.style.position = 'absolute';
-        smallCircle.style.left = `-${smallSize / 2}px`; // Half outside the main cloud on the left
-        setCloudPositionAndSpeed(smallCircle, speed, true);
+        // Determine direction and apply it
+        cloudBase.style.animationName = Math.random() > 0.5 ? 'driftRight' : 'driftLeft';
 
-        const largeCircle = document.createElement('div');
-        largeCircle.className = 'cloud-part';
-        const largeSize = (mainSize / 3) * 2;
-        largeCircle.style.width = `${largeSize}px`;
-        largeCircle.style.height = `${largeSize}px`;
-        largeCircle.style.position = 'absolute';
-        largeCircle.style.right = `-${largeSize / 2}px`; // Half outside the main cloud on the right
-        setCloudPositionAndSpeed(largeCircle, speed, true);
+        // Create and append smaller circles to simulate a cloud shape
+        appendCloudPart(cloudBase, mainSize / 3, '-left');
+        appendCloudPart(cloudBase, (mainSize / 3) * 2, '-right');
 
-        // Append circles to the main cloud div
-        cloudBase.appendChild(smallCircle);
-        cloudBase.appendChild(largeCircle);
-
-        // Append the main cloud div to the container
         cloudsContainer.appendChild(cloudBase);
     }
 
-    function setCloudPositionAndSpeed(element, speed, isPart = false) {
-        element.style.animationDuration = `${speed}s`;
-        if (!isPart) { // Only set top position for the main cloud, not its parts
-            element.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
-        }
+    function appendCloudPart(cloudBase, size, side) {
+        const part = document.createElement('div');
+        part.className = `cloud-part${side}`;
+        part.style.width = `${size}px`;
+        part.style.height = `${size}px`;
+        cloudBase.appendChild(part);
     }
 
-    // Create a specified number of clouds
+    function createSymbol() {
+        const size = Math.random() * (50 - 20) + 20; // Symbol size
+        const symbol = document.createElement('div');
+        symbol.className = 'symbol';
+        symbol.textContent = '$1';
+        symbol.style.fontSize = `${size}px`;
+        symbol.style.animationDuration = `${Math.random() * (60 - 20) + 20}s`;
+        symbol.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
+
+        // Determine direction and apply it
+        symbol.style.animationName = Math.random() > 0.5 ? 'driftRight' : 'driftLeft';
+
+        symbolsContainer.appendChild(symbol);
+    }
+
+    // Create clouds and symbols
     for (let i = 0; i < 20; i++) {
         createCloud();
     }
-}
-   function createFloatingElement(elementType, container, sizeRange, durationRange, isSymbol = false) {
-        const element = document.createElement('div');
-        element.className = elementType;
-        const size = Math.random() * (sizeRange.max - sizeRange.min) + sizeRange.min;
-        element.style.width = isSymbol ? `${size / 2}px` : `${size}px`;
-        element.style.height = `${size * 0.6}px`;
-        element.style.top = `${Math.random() * (window.innerHeight - 50)}px`; // Random start position along Y-axis
-        element.style.animationDuration = `${Math.random() * (durationRange.max - durationRange.min) + durationRange.min}s`;
-
-        // Randomly assign direction
-        const direction = Math.random() > 0.5 ? 'normal' : 'reverse';
-        element.style.animationDirection = direction;
-
-        if (isSymbol) {
-            element.textContent = '$1';
-            element.style.fontSize = `${size / 3}px`;
-        }
-
-        container.appendChild(element);
-    }
-
-    // Create $1 symbols
     for (let i = 0; i < 5; i++) {
-        createFloatingElement('symbol', symbolsContainer, {min: 20, max: 50}, {min: 40, max: 60}, true);
+        createSymbol();
     }
 }
 
-
-// Modal functionality remains the same as your current script
+// Modal functionality
 var modal = document.getElementById("paymentOptions");
 var btn = document.getElementById("donateButton");
 
@@ -98,5 +74,5 @@ window.onclick = function(event) {
     }
 }
 
-// Initialize clouds and symbols
+// Initialize everything
 createCloudsAndSymbols();
