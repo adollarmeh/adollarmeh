@@ -8,20 +8,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="clouds">
         <div class="cloud" id="cloud1"></div>
         <div class="cloud" id="cloud2"></div>
         <div class="cloud" id="cloud3"></div>
-<!-- You can add more clouds if you like -->
+    </div>
+    <div class="container">
         <button id="donateButton">aDollarMeh</button>
         <div id="paymentOptions" class="modal">
-            <!-- Payment instructions here -->
-            <p>To donate $1, please use the following options:</p>
-            <ul>
-                <li>Bank Transfer: BSB 342201, Acc 141561090</li>
-                <li>PayPal: <a href="https://www.paypal.com/paypalme/millionideas" target="_blank">paypal.me/millionideas</a></li>
-            </ul>
-            <button onclick="closeModal()">Close</button>
+            <div class="modal-content">
+                <p>To donate $1, please use the following options:</p>
+                <ul>
+                    <li>Bank Transfer: BSB 342201, Acc 141561090</li>
+                    <li>PayPal: <a href="https://www.paypal.com/paypalme/millionideas" target="_blank">paypal.me/millionideas</a></li>
+                </ul>
+                <button onclick="closeModal()">Close</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>
