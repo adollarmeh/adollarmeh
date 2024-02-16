@@ -20,13 +20,13 @@ function createCloudsAndSymbols() {
     }
 
     // Corrected loop to mix both types of clouds
-    for (let i = 0; i < 20; i++) { // Adjusted number of clouds to 20 for demonstration
+    for (let i = 0; i < 100; i++) { // Adjusted number of clouds to 20 for demonstration
         const cloudGif = getRandomCloudGif(); // Randomly selects between cloud.gif and cloud2.gif
         createGifElement(cloudGif, 'cloud', cloudsContainer);
     }
     
     // Create symbols
-    for (let i = 0; i < 10; i++) { // Keeps original functionality for symbols
+    for (let i = 0; i < 50; i++) { // Keeps original functionality for symbols
         createGifElement('coin.gif', 'symbol', symbolsContainer);
     }
 }
