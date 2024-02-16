@@ -84,10 +84,10 @@ document.addEventListener('DOMContentLoaded', function() {
         // Determine the direction of movement
         if (Math.abs(diffX) > Math.abs(diffY)) {
             // Horizontal movement
-            follower.src = diffX > 0 ? 'path/to/collector3.gif' : 'path/to/collector1.gif'; // Right or Left
+            follower.src = diffX > 0 ? 'collector3.gif' : 'collector1.gif'; // Right or Left
         } else {
             // Vertical movement
-            follower.src = diffY > 0 ? 'path/to/collector4.gif' : 'path/to/collector2.gif'; // Down or Up
+            follower.src = diffY > 0 ? 'collector4.gif' : 'collector2.gif'; // Down or Up
         }
 
         lastX = e.pageX;
