@@ -7,9 +7,9 @@ body, html {
     position: relative;
 }
 
-.cloud {
+.cloud, .symbol {
     position: absolute;
-    animation: driftRight linear infinite;
+    animation: driftRight linear infinite; /* Default animation setup */
 }
 
 @keyframes driftRight {
@@ -22,6 +22,7 @@ body, html {
     100% { transform: translateX(-100vw); }
 }
 
+/* Container, modal, and button styling remains the same */
 .container {
     position: fixed;
     top: 50%;
