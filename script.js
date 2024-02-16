@@ -41,8 +41,10 @@ document.addEventListener('mousemove', function(event) {
     }
 
     follower.style.display = 'block';
-    follower.style.left = `${event.pageX + 1}px`;
-    follower.style.top = `${event.pageY + 1}px`;
+    const halfWidth = 16.5; // Half the width of the follower GIF
+    const halfHeight = 16.5; // Half the height of the follower GIF
+    follower.style.left = `${event.pageX - halfWidth}px`;
+    follower.style.top = `${event.pageY - halfHeight}px`;
 
     lastX = event.clientX;
     lastY = event.clientY;
