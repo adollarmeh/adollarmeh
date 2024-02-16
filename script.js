@@ -6,7 +6,7 @@ function createCloudsAndSymbols() {
         const gif = document.createElement('img');
         gif.src = src;
         gif.className = className;
-        const size = Math.random() * (120 - 80) + 80;
+        const size = Math.random() * (180 - 80) + 80;
         gif.style.width = `${className === 'cloud' ? size : size / 2}px`;
         gif.style.animationDuration = `${Math.random() * (60 - 20) + 20}s`;
         gif.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
@@ -14,8 +14,8 @@ function createCloudsAndSymbols() {
         container.appendChild(gif);
     }
 
-    for (let i = 0; i < 20; i++) { createGifElement('cloud.gif', 'cloud', cloudsContainer); }
-    for (let i = 0; i < 10; i++) { createGifElement('coin.gif', 'symbol', symbolsContainer); }
+    for (let i = 0; i < 100; i++) { createGifElement('cloud.gif', 'cloud', cloudsContainer); }
+    for (let i = 0; i < 50; i++) { createGifElement('coin.gif', 'symbol', symbolsContainer); }
 }
 
 let lastX, lastY;
