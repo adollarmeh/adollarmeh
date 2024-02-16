@@ -33,10 +33,10 @@ document.addEventListener('mousemove', function(event) {
     const bodyElement = document.querySelector('body');
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
-        bodyElement.style.cursor = `url(${diffX > 0 ? 'collector3.gif' : 'collector1.gif'}), auto`;
+        bodyElement.style.cursor = `url(${diffX > 0 ? 'collector.png' : 'collector.png'}), auto`;
         follower.src = diffX > 0 ? 'collector3.gif' : 'collector1.gif';
     } else {
-        bodyElement.style.cursor = `url(${diffY > 0 ? 'collector4.gif' : 'collector2.gif'}), auto`;
+        bodyElement.style.cursor = `url(${diffY > 0 ? 'collector.png' : 'collector.png'}), auto`;
         follower.src = diffY > 0 ? 'collector4.gif' : 'collector2.gif';
     }
 
