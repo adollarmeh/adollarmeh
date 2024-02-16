@@ -55,6 +55,16 @@ document.addEventListener('mouseleave', function() {
     follower.style.display = 'none';
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const counterElement = document.getElementById('visitorCounter');
+    let visitors = 1000; // Starting number
+
+    setInterval(function() {
+        visitors++;
+        counterElement.innerText = `Visitors: ${visitors}`;
+    }, 1000); // Update the counter every 1000 milliseconds (1 second)
+});
+
 // Modal functionality
 var modal = document.getElementById("paymentOptions");
 var btn = document.getElementById("donateButton");
