@@ -3,7 +3,7 @@ function createCloudsAndSymbols() {
 
     function createCloud() {
         const cloudImg = document.createElement('img');
-        cloudImg.src = 'images/cloud.gif'; // Ensure the path matches where you upload the GIF
+        cloudImg.src = 'main/cloud.gif'; // Ensure the path matches where you upload the GIF
         cloudImg.className = 'cloud';
         cloudImg.style.animationDuration = `${Math.random() * (60 - 20) + 20}s`;
         cloudImg.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
@@ -12,7 +12,7 @@ function createCloudsAndSymbols() {
     }
 
     // Create a specified number of clouds
-    for (let i = 0; i < 20; i++) {
+    for (let i = 0; i < 50; i++) {
         createCloud();
     }
 }
