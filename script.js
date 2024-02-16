@@ -35,19 +35,19 @@ document.addEventListener('keydown', function(event) {
     switch(event.key) {
         case "ArrowLeft":
             // Change cursor to collector1.gif when moving left
-            bodyElement.style.cursor = 'url(collector1.gif), auto';
+            bodyElement.style.cursor = 'collector1.gif, auto';
             break;
         case "ArrowRight":
             // Change cursor to collector3.gif when moving right
-            bodyElement.style.cursor = 'url(collector3.gif), auto';
+            bodyElement.style.cursor = 'collector3.gif, auto';
             break;
         case "ArrowUp":
             // Change cursor to collector2.gif when moving up
-            bodyElement.style.cursor = 'url(collector2.gif), auto';
+            bodyElement.style.cursor = 'collector2.gif, auto';
             break;
         case "ArrowDown":
             // Change cursor to collector4.gif when moving down
-            bodyElement.style.cursor = 'url(collector4.gif), auto';
+            bodyElement.style.cursor = 'collector4.gif, auto';
             break;
     }
 });
