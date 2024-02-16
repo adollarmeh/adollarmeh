@@ -41,8 +41,8 @@ document.addEventListener('mousemove', function(event) {
     }
 
     follower.style.display = 'block';
-    const halfWidth = 16.5; // Half the width of the follower GIF
-    const halfHeight = 16.5; // Half the height of the follower GIF
+    const halfWidth = 64; // Half the width of the follower GIF
+    const halfHeight = 64; // Half the height of the follower GIF
     follower.style.left = `${event.pageX - halfWidth}px`;
     follower.style.top = `${event.pageY - halfHeight}px`;
 
