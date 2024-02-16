@@ -2,12 +2,11 @@ body, html {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    background-color: #87CEEB;
-    font-family: 'Nunito', sans-serif;
     position: relative;
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(to top, #0f0c29 0%, #302b63 25%, #24243e 50%, #414345 75%, #232526 100%);
 }
 
-/* Add this to your style.css */
 .custom-cursor {
     /* Placeholder for dynamic cursor changes via JavaScript */
     cursor: none;
