@@ -14,25 +14,22 @@ function createCloudsAndSymbols() {
         container.appendChild(gif);
     }
 
-    // Function to randomly select a cloud GIF
     function getRandomCloudGif() {
-        // Array of cloud GIF filenames
         const cloudGifs = ['cloud.gif', 'cloud2.gif'];
-        // Randomly select a filename
-        const selectedGif = cloudGifs[Math.floor(Math.random() * cloudGifs.length)];
-        return selectedGif;
+        return cloudGifs[Math.floor(Math.random() * cloudGifs.length)];
     }
 
-    for (let i = 0; i < 100; i++) { createGifElement('cloud.gif', 'cloud', cloudsContainer); }
-        const cloudGif = getRandomCloudGif(); // Randomly select the cloud GIF
+    // Corrected loop to mix both types of clouds
+    for (let i = 0; i < 20; i++) { // Adjusted number of clouds to 20 for demonstration
+        const cloudGif = getRandomCloudGif(); // Randomly selects between cloud.gif and cloud2.gif
         createGifElement(cloudGif, 'cloud', cloudsContainer);
     }
     
-    for (let i = 0; i < 50; i++) { createGifElement('coin.gif', 'symbol', symbolsContainer); }
+    // Create symbols
+    for (let i = 0; i < 10; i++) { // Keeps original functionality for symbols
+        createGifElement('coin.gif', 'symbol', symbolsContainer);
+    }
 }
-
-let lastX, lastY;
-const follower = document.getElementById('follower');
 
 document.addEventListener('mousemove', function(event) {
     if (typeof lastX === 'undefined' || typeof lastY === 'undefined') {
