@@ -14,7 +14,20 @@ function createCloudsAndSymbols() {
         container.appendChild(gif);
     }
 
+    // Function to randomly select a cloud GIF
+    function getRandomCloudGif() {
+        // Array of cloud GIF filenames
+        const cloudGifs = ['cloud.gif', 'cloud2.gif'];
+        // Randomly select a filename
+        const selectedGif = cloudGifs[Math.floor(Math.random() * cloudGifs.length)];
+        return selectedGif;
+    }
+
     for (let i = 0; i < 100; i++) { createGifElement('cloud.gif', 'cloud', cloudsContainer); }
+        const cloudGif = getRandomCloudGif(); // Randomly select the cloud GIF
+        createGifElement(cloudGif, 'cloud', cloudsContainer);
+    }
+    
     for (let i = 0; i < 50; i++) { createGifElement('coin.gif', 'symbol', symbolsContainer); }
 }
 
