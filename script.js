@@ -6,31 +6,23 @@ function createCloudsAndSymbols() {
         const gif = document.createElement('img');
         gif.src = src;
         gif.className = className;
-        const size = Math.random() * (120 - 80) + 80; // For clouds, larger size
-        gif.style.width = `${className === 'cloud' ? size : size / 2}px`; // Symbols are smaller
+        const size = Math.random() * (120 - 80) + 80;
+        gif.style.width = `${className === 'cloud' ? size : size / 2}px`;
         gif.style.animationDuration = `${Math.random() * (60 - 20) + 20}s`;
         gif.style.top = `${Math.random() * (window.innerHeight - 50)}px`;
         gif.style.animationName = Math.random() > 0.5 ? 'driftRight' : 'driftLeft';
         container.appendChild(gif);
     }
 
-    // Create clouds with cloud.gif
-    for (let i = 0; i < 20; i++) {
-        createGifElement('cloud.gif', 'cloud', cloudsContainer);
-    }
-
-    // Create $1 symbols with coin.gif
-    for (let i = 0; i < 10; i++) { // Adjust number of symbols as desired
-        createGifElement('coin.gif', 'symbol', symbolsContainer);
-    }
+    for (let i = 0; i < 20; i++) { createGifElement('cloud.gif', 'cloud', cloudsContainer); }
+    for (let i = 0; i < 10; i++) { createGifElement('coin.gif', 'symbol', symbolsContainer); }
 }
 
 let lastX, lastY;
+const follower = document.getElementById('follower');
 
 document.addEventListener('mousemove', function(event) {
-    const bodyElement = document.querySelector('body');
-
-    if (typeof lastX === 'undefined') {
+    if (typeof lastX === 'undefined' || typeof lastY === 'undefined') {
         lastX = event.clientX;
         lastY = event.clientY;
         return;
@@ -38,68 +30,28 @@ document.addEventListener('mousemove', function(event) {
 
     const diffX = event.clientX - lastX;
     const diffY = event.clientY - lastY;
-
-    let cursorImage = '';
+    const bodyElement = document.querySelector('body');
 
     if (Math.abs(diffX) > Math.abs(diffY)) {
-        // Horizontal movement
-        cursorImage = diffX > 0 ? 'collector3.gif' : 'collector1.gif'; // Right or Left
+        bodyElement.style.cursor = `url(${diffX > 0 ? 'collector3.gif' : 'collector1.gif'}), auto`;
+        follower.src = diffX > 0 ? 'collector3.gif' : 'collector1.gif';
     } else {
-        // Vertical movement
-        cursorImage = diffY > 0 ? 'collector4.gif' : 'collector2.gif'; // Down or Up
+        bodyElement.style.cursor = `url(${diffY > 0 ? 'collector4.gif' : 'collector2.gif'}), auto`;
+        follower.src = diffY > 0 ? 'collector4.gif' : 'collector2.gif';
     }
 
-    bodyElement.style.cursor = `url(${cursorImage}), auto`;
+    follower.style.display = 'block';
+    follower.style.left = `${event.pageX + 10}px`;
+    follower.style.top = `${event.pageY + 10}px`;
 
     lastX = event.clientX;
     lastY = event.clientY;
 });
 
-// Reset cursor when mouse leaves the document
 document.addEventListener('mouseleave', function() {
     document.querySelector('body').style.cursor = 'auto';
+    follower.style.display = 'none';
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-    let lastX, lastY;
-    const follower = document.getElementById('follower');
-
-    document.addEventListener('mousemove', function(e) {
-        // Show the follower
-        follower.style.display = 'block';
-
-        // Position the follower slightly offset from the cursor
-        follower.style.left = (e.pageX + 10) + 'px';
-        follower.style.top = (e.pageY + 10) + 'px';
-
-        if (typeof lastX === 'undefined') {
-            lastX = e.pageX;
-            lastY = e.pageY;
-            return;
-        }
-
-        const diffX = e.pageX - lastX;
-        const diffY = e.pageY - lastY;
-
-        // Determine the direction of movement
-        if (Math.abs(diffX) > Math.abs(diffY)) {
-            // Horizontal movement
-            follower.src = diffX > 0 ? 'collector3.gif' : 'collector1.gif'; // Right or Left
-        } else {
-            // Vertical movement
-            follower.src = diffY > 0 ? 'collector4.gif' : 'collector2.gif'; // Down or Up
-        }
-
-        lastX = e.pageX;
-        lastY = e.pageY;
-    });
-
-    // Optionally, hide the follower when the mouse stops moving
-    document.addEventListener('mouseout', function() {
-        follower.style.display = 'none';
-    });
-});
-
 
 // Modal functionality
 var modal = document.getElementById("paymentOptions");
