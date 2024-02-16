@@ -60,6 +60,46 @@ document.addEventListener('mouseleave', function() {
     document.querySelector('body').style.cursor = 'auto';
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    let lastX, lastY;
+    const follower = document.getElementById('follower');
+
+    document.addEventListener('mousemove', function(e) {
+        // Show the follower
+        follower.style.display = 'block';
+
+        // Position the follower slightly offset from the cursor
+        follower.style.left = (e.pageX + 10) + 'px';
+        follower.style.top = (e.pageY + 10) + 'px';
+
+        if (typeof lastX === 'undefined') {
+            lastX = e.pageX;
+            lastY = e.pageY;
+            return;
+        }
+
+        const diffX = e.pageX - lastX;
+        const diffY = e.pageY - lastY;
+
+        // Determine the direction of movement
+        if (Math.abs(diffX) > Math.abs(diffY)) {
+            // Horizontal movement
+            follower.src = diffX > 0 ? 'path/to/collector3.gif' : 'path/to/collector1.gif'; // Right or Left
+        } else {
+            // Vertical movement
+            follower.src = diffY > 0 ? 'path/to/collector4.gif' : 'path/to/collector2.gif'; // Down or Up
+        }
+
+        lastX = e.pageX;
+        lastY = e.pageY;
+    });
+
+    // Optionally, hide the follower when the mouse stops moving
+    document.addEventListener('mouseout', function() {
+        follower.style.display = 'none';
+    });
+});
+
 
 // Modal functionality
 var modal = document.getElementById("paymentOptions");
