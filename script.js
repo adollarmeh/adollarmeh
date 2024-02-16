@@ -25,39 +25,41 @@ function createCloudsAndSymbols() {
     }
 }
 
-document.addEventListener('keydown', function(event) {
+let lastX, lastY;
+
+document.addEventListener('mousemove', function(event) {
     const bodyElement = document.querySelector('body');
-    // Ensure the body has the custom cursor class
-    if (!bodyElement.classList.contains('custom-cursor')) {
-        bodyElement.classList.add('custom-cursor');
+
+    if (typeof lastX === 'undefined') {
+        lastX = event.clientX;
+        lastY = event.clientY;
+        return;
     }
 
-    switch(event.key) {
-        case "ArrowLeft":
-            // Change cursor to collector1.gif when moving left
-            bodyElement.style.cursor = 'collector1.gif, auto';
-            break;
-        case "ArrowRight":
-            // Change cursor to collector3.gif when moving right
-            bodyElement.style.cursor = 'collector3.gif, auto';
-            break;
-        case "ArrowUp":
-            // Change cursor to collector2.gif when moving up
-            bodyElement.style.cursor = 'collector2.gif, auto';
-            break;
-        case "ArrowDown":
-            // Change cursor to collector4.gif when moving down
-            bodyElement.style.cursor = 'collector4.gif, auto';
-            break;
+    const diffX = event.clientX - lastX;
+    const diffY = event.clientY - lastY;
+
+    let cursorImage = '';
+
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+        // Horizontal movement
+        cursorImage = diffX > 0 ? 'collector3.gif' : 'collector1.gif'; // Right or Left
+    } else {
+        // Vertical movement
+        cursorImage = diffY > 0 ? 'collector4.gif' : 'collector2.gif'; // Down or Up
     }
+
+    bodyElement.style.cursor = `url(${cursorImage}), auto`;
+
+    lastX = event.clientX;
+    lastY = event.clientY;
 });
 
-document.addEventListener('keyup', function(event) {
-    // Revert to the default cursor when the arrow keys are released
-    if (["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) {
-        document.querySelector('body').style.cursor = '';
-    }
+// Reset cursor when mouse leaves the document
+document.addEventListener('mouseleave', function() {
+    document.querySelector('body').style.cursor = 'auto';
 });
+
 
 // Modal functionality
 var modal = document.getElementById("paymentOptions");
