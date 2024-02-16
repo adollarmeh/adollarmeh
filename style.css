@@ -12,6 +12,12 @@ body, html {
     animation: driftRight linear infinite; /* Default animation setup */
 }
 
+/* Add this to your style.css */
+.custom-cursor {
+    /* Placeholder for dynamic cursor changes via JavaScript */
+    cursor: none;
+}
+
 @keyframes driftRight {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100vw); }
