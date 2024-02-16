@@ -41,8 +41,8 @@ document.addEventListener('mousemove', function(event) {
     }
 
     follower.style.display = 'block';
-    follower.style.left = `${event.pageX + 10}px`;
-    follower.style.top = `${event.pageY + 10}px`;
+    follower.style.left = `${event.pageX + 1}px`;
+    follower.style.top = `${event.pageY + 1}px`;
 
     lastX = event.clientX;
     lastY = event.clientY;
