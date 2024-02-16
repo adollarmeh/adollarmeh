@@ -7,15 +7,15 @@ body, html {
     position: relative;
 }
 
-.cloud, .symbol {
-    position: absolute;
-    animation: driftRight linear infinite; /* Default animation setup */
-}
-
 /* Add this to your style.css */
 .custom-cursor {
     /* Placeholder for dynamic cursor changes via JavaScript */
     cursor: none;
+}
+
+.cloud, .symbol {
+    position: absolute;
+    animation: driftRight linear infinite; /* Default animation setup */
 }
 
 @keyframes driftRight {
