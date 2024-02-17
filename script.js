@@ -67,11 +67,28 @@ document.addEventListener('mouseleave', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
     const counterElement = document.getElementById('visitorCounter');
-    let visitors = 1000; // Starting number
-
+    
+    // Define the start date
+    const startDate = new Date('2024-01-01');
+    const currentDate = new Date();
+    
+    // Calculate the difference in days
+    const differenceInTime = currentDate - startDate;
+    const differenceInDays = differenceInTime / (1000 * 3600 * 24);
+    
+    // Generate a random value between 1 and 100 for each day
+    const randomIncrement = differenceInDays * (Math.floor(Math.random() * 100) + 1);
+    
+    // Starting number (could be adjusted based on your preference)
+    let visitors = 1000 + randomIncrement;
+    
+    // Display the initial visitor count
+    counterElement.innerText = `Visitors: ${Math.round(visitors)}`;
+    
+    // Optionally, increment the counter over time while the user is on the page
     setInterval(function() {
         visitors++;
-        counterElement.innerText = `Visitors: ${visitors}`;
+        counterElement.innerText = `Visitors: ${Math.round(visitors)}`;
     }, 1000); // Update the counter every 1000 milliseconds (1 second)
 });
 
