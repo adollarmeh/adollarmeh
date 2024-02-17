@@ -84,13 +84,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Display the initial visitor count
     counterElement.innerText = `Visitors: ${Math.round(visitors)}`;
-    
-    // Optionally, increment the counter over time while the user is on the page
-    setInterval(function() {
+
+    // Function to increment the visitor count at random intervals
+    function incrementVisitorCount() {
         visitors++;
         counterElement.innerText = `Visitors: ${Math.round(visitors)}`;
-    }, 1000); // Update the counter every 1000 milliseconds (1 second)
+
+        // Calculate the next timeout duration: between 1 second (1000ms) and 15 minutes (900000ms)
+        const nextTimeout = Math.floor(Math.random() * (900000 - 1000 + 1)) + 1000;
+
+        // Set the timeout for the next increment
+        setTimeout(incrementVisitorCount, nextTimeout);
+    }
+
+    // Start the first increment after a random interval
+    incrementVisitorCount();
 });
+
 
 // Modal functionality
 var modal = document.getElementById("paymentOptions");
