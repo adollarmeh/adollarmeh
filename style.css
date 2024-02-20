@@ -24,19 +24,9 @@ body, html {
 #sunGif {
     position: fixed;
     width: 300px; /* Adjust based on the size of your GIF */
-    z-index: -1; /* Ensure it's behind other content */
-    animation: floatSun 60s infinite linear; /* Adjust timing for the loop as needed */
+    z-index: 100; /* Ensure it's behind other content */
+    animation: floatSun 30s infinite linear; /* Adjust timing for the loop as needed */
     pointer-events: none; /* Prevents the GIF from interfering with clicks on elements behind it */
-}
-
-@keyframes driftRight {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100vw); }
-}
-
-@keyframes driftLeft {
-    0% { transform: translateX(100%); }
-    100% { transform: translateX(-100vw); }
 }
 
 @keyframes floatSun {
@@ -57,6 +47,17 @@ body, html {
         opacity: 1;
     }
 }
+
+@keyframes driftRight {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100vw); }
+}
+
+@keyframes driftLeft {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100vw); }
+}
+
 
 
 /* Container, modal, and button styling remains the same */
