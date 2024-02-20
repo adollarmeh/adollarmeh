@@ -27,7 +27,13 @@ function createCloudsAndSymbols() {
     
     // Create symbols
     for (let i = 0; i < 50; i++) { // Keeps original functionality for symbols
-        createGifElement('coin.gif', 'Bitc.gif', 'symbol', symbolsContainer);
+        createGifElement('coin.gif', 'symbol', symbolsContainer);
+    }
+}
+
+   // Create symbols
+    for (let i = 0; i < 30; i++) { // Keeps original functionality for symbols
+        createGifElement('Bitc.gif', 'symbol', symbolsContainer);
     }
 }
 
