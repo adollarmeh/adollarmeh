@@ -17,6 +17,10 @@ body, html {
     animation: driftRight linear infinite; /* Default animation setup */
 }
 
+#follower {
+    z-index: 2000; /* Higher than any other element */
+}
+
 #sunGif {
     position: fixed;
     width: 600px; /* Adjust based on the size of your GIF */
