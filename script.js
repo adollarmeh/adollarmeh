@@ -27,16 +27,9 @@ function createCloudsAndSymbols() {
     
     // Create symbols
     for (let i = 0; i < 50; i++) { // Keeps original functionality for symbols
-        createGifElement('coin.gif', 'symbol', symbolsContainer);
+        createGifElement('coin.gif', 'Bitc.gif', 'symbol', symbolsContainer);
     }
 }
-
-    // Create symbols
-    for (let i = 0; i < 50; i++) { // Keeps original functionality for symbols
-        createGifElement('Bitc.gif', 'symbol', symbolsContainer);
-    }
-}
-
 
 document.addEventListener('mousemove', function(event) {
     if (typeof lastX === 'undefined' || typeof lastY === 'undefined') {
