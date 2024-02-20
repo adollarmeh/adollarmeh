@@ -15,7 +15,7 @@ function createCloudsAndSymbols() {
     }
 
     function getRandomCloudGif() {
-        const cloudGifs = ['cloud.gif', 'cloud2.gif'];
+        const cloudGifs = ['cloud.gif', 'star.gif'];
         return cloudGifs[Math.floor(Math.random() * cloudGifs.length)];
     }
 
@@ -26,13 +26,13 @@ function createCloudsAndSymbols() {
     }
     
     // Create coin symbols
-    for (let i = 0; i < 50; i++) { // Keeps original functionality for symbols
+    for (let i = 0; i < 40; i++) { // Keeps original functionality for symbols
         createGifElement('coin.gif', 'symbol', symbolsContainer);
     }
 
    // Create Bitc symbols
     for (let i = 0; i < 30; i++) { // Keeps original functionality for symbols
-        createGifElement('star.gif', 'symbol', symbolsContainer);
+        createGifElement('Eth.gif', 'symbol', symbolsContainer);
     }
 }
 
