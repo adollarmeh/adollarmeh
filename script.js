@@ -15,7 +15,7 @@ function createCloudsAndSymbols() {
     }
 
     function getRandomCloudGif() {
-        const cloudGifs = ['cloud.gif', 'Eth.gif'];
+        const cloudGifs = ['cloud.gif', 'cloud2.gif'];
         return cloudGifs[Math.floor(Math.random() * cloudGifs.length)];
     }
 
@@ -32,7 +32,7 @@ function createCloudsAndSymbols() {
 
    // Create Bitc symbols
     for (let i = 0; i < 30; i++) { // Keeps original functionality for symbols
-        createGifElement('Bitc.gif', 'symbol', symbolsContainer);
+        createGifElement('star.gif', 'symbol', symbolsContainer);
     }
 }
 
