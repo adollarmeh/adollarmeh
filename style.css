@@ -17,6 +17,14 @@ body, html {
     animation: driftRight linear infinite; /* Default animation setup */
 }
 
+#sunGif {
+    position: fixed;
+    width: 600px; /* Adjust based on the size of your GIF */
+    z-index: -1; /* Ensure it's behind other content */
+    animation: floatSun 60s infinite linear; /* Adjust timing for the loop as needed */
+    pointer-events: none; /* Prevents the GIF from interfering with clicks on elements behind it */
+}
+
 @keyframes driftRight {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100vw); }
@@ -115,14 +123,6 @@ button {
 button:hover {
     background-color: black;
     color: white;
-}
-
-#sunGif {
-    position: fixed;
-    width: 600px; /* Adjust based on the size of your GIF */
-    z-index: -1; /* Ensure it's behind other content */
-    animation: floatSun 60s infinite linear; /* Adjust timing for the loop as needed */
-    pointer-events: none; /* Prevents the GIF from interfering with clicks on elements behind it */
 }
 
 #visitorCounter {
