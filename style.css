@@ -23,7 +23,7 @@ body, html {
 
 #sunGif {
     position: fixed;
-    width: 600px; /* Adjust based on the size of your GIF */
+    width: 300px; /* Adjust based on the size of your GIF */
     z-index: -1; /* Ensure it's behind other content */
     animation: floatSun 60s infinite linear; /* Adjust timing for the loop as needed */
     pointer-events: none; /* Prevents the GIF from interfering with clicks on elements behind it */
