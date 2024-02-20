@@ -19,7 +19,7 @@ function createCloudsAndSymbols() {
         return cloudGifs[Math.floor(Math.random() * cloudGifs.length)];
     }
 
-    // Corrected loop to mix both types of clouds
+    
     for (let i = 0; i < 100; i++) { // Adjusted number of clouds to 20 for demonstration
         const cloudGif = getRandomCloudGif(); // Randomly selects between cloud.gif and cloud2.gif
         createGifElement(cloudGif, 'cloud', cloudsContainer);
